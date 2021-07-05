@@ -23,11 +23,25 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  login (){
-   
+
+  // accChange(event:any){
+  //   this.accno =event.target.value
+  // //  alert(this.accno)
+  // }
+  // passwdChange(event:any){
+  //   this.pwd =event.target.value
+  // //  alert(this.pwd)
+  // }
+
+  login(){
+    // var acno = a.value
+    // var pwd = p.value
+
     var acno = this.accno;
     var pwd = this.pwd;
-    let accDetails = this.users;
+  // alert("login successful")
+
+  let accDetails = this.users;
     if (acno in accDetails){
       if (pwd == accDetails[acno]["password"]){
        alert("Login Successful")
@@ -40,17 +54,35 @@ export class LoginComponent implements OnInit {
     else {
       alert("Invalid Account details")
     }
-
-
-
-
   }
-  accChange(event:any){
-    this.accno =event.target.value
-  //  alert(this.accno)
-  }
-  passwdChange(event:any){
-    this.pwd =event.target.value
-  //  alert(this.pwd)
-  }
+  // login (){
+   
+  //   var acno = this.accno;
+  //   var pwd = this.pwd;
+  //   let accDetails = this.users;
+  //   if (acno in accDetails){
+  //     if (pwd == accDetails[acno]["password"]){
+  //      alert("Login Successful")
+  //     }
+  //     else{
+  //       alert("Incorrect Password")
+  //     }
+
+  //   }
+  //   else {
+  //     alert("Invalid Account details")
+  //   }
+
+
+
+
+  // }
+  // accChange(event:any){
+  //   this.accno =event.target.value
+  // //  alert(this.accno)
+  // }
+  // passwdChange(event:any){
+  //   this.pwd =event.target.value
+  // //  alert(this.pwd)
+  // }
 }
