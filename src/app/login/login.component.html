@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 first"></div>
+        <div class="col-lg-4 col-sm-12 main">
+            <h2>Sign In</h2><hr>
+            <h3>{{Aim }}</h3>
+            <input type="text" class="items" id="acno" (change)="accChange($event)"[value] = "account" placeholder="Account Number"><br>
+            
+            <!-- <input type="text" class="items" id="uname" placeholder="USERNAME"><br> -->
+            <input type="password" class="items" (change) = "passwdChange($event)" id="pwd" placeholder="PASSWORD"><br>
+            
+            <button class="item" (click) = "login()">Log In</button>
+
+        </div>
+        <div class="col-lg-4 col-sm-12"><h1><br><p></p></h1></div>
+    </div>
+</div>
