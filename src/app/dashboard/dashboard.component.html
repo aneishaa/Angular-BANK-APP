@@ -1,1 +1,37 @@
-<p>dashboard works!</p>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12 first"></div>
+            <div class="col-lg-4 col-sm-12 main">
+                <h2>Transaction Deposit</h2>
+                <hr>
+                <form (ngSubmit)="deposit()">
+                    <input type="text" class="items" [(ngModel)]="cname" name="cname" id="customername" placeholder="Customer Name"><br>
+                    <input type="text" class="items" id="accountnumber" [(ngModel)]="accno" name="accno"  placeholder="Confirm Account Number"><br>
+                    <input type="text" class="items" id="Amt" [(ngModel)]="amt" name="amount" placeholder="Amount"><br>
+
+                    <button class="item" >Deposit</button>
+                </form>
+                <!-- <div class="items" id="displayArea"></div> -->
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-12 first"></div>
+                <div class="col-lg-4 col-sm-12 main">
+                    <h2>Transaction Withdraw</h2>
+                    <hr>
+                    <form (ngSubmit)="withdraw()">
+                        <input type="text" class="items" id="customername" [(ngModel)]="cname1" name="cname" placeholder="Customer Name"><br>
+                        
+                        <input type="text" class="items" id="accountnumber" [(ngModel)]="accno1" name="accno" placeholder="Confirm Account Number"><br>
+                        <input type="text" class="items" id="Amt" [(ngModel)]= "amt1" name="amount" placeholder="Amount"><br>
+    
+                        <button class="item" >Withdraw</button>
+                    </form>
+                    <!-- <div class="items" id="displayArea"></div> -->
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</body>

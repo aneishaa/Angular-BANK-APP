@@ -32,4 +32,21 @@ export class DataService {
     return true;
     }
   }
+   login(acno:any,pwd:any){
+     let accDetails = this.users;
+     if (acno in accDetails){
+       if (pwd==accDetails[acno]["password"]){
+         return true;
+       }
+       else{
+         alert("incorrect password");
+         return false;
+       }
+
+     }
+     else {
+       alert("invalid accnt number");
+       return false;
+     }
+   }
 }
