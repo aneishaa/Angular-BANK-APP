@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 @Component({ 
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,15 +12,15 @@ export class LoginComponent implements OnInit {
   account = "Account Number Please"
   accno = ""
   pwd = ""
-  users:any = {
-    1000: { acno: 1000, username: "userone", password: "userone", actype: "savings", balance: 5000 },
-    1001: { acno: 1001, username: "usertwo", password: "usertwo", actype: "savings", balance: 6000 },
-    1002: { acno: 1002, username: "userthree", password: "userthree", actype: "savings", balance: 7000 },
-    1003: { acno: 1003, username: "userfour", password: "userfour", actype: "savings", balance: 8000 }
+//   users:any = {
+//     1000: { acno: 1000, username: "userone", password: "userone", actype: "savings", balance: 5000 },
+//     1001: { acno: 1001, username: "usertwo", password: "usertwo", actype: "savings", balance: 6000 },
+//     1002: { acno: 1002, username: "userthree", password: "userthree", actype: "savings", balance: 7000 },
+//     1003: { acno: 1003, username: "userfour", password: "userfour", actype: "savings", balance: 8000 }
 
-}
+// }
 
-  constructor() { }
+  constructor(private router:Router,private ds:DataService) { }
 
   ngOnInit(): void {
   }
@@ -41,10 +42,11 @@ export class LoginComponent implements OnInit {
     var pwd = this.pwd;
   // alert("login successful")
 
-  let accDetails = this.users;
+  let accDetails = this.ds.users;
     if (acno in accDetails){
       if (pwd == accDetails[acno]["password"]){
        alert("Login Successful")
+       this.router.navigateByUrl("dashboard")
       }
       else{
         alert("Incorrect Password")
