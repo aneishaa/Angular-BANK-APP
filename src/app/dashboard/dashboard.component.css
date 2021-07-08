@@ -107,6 +107,11 @@ h1{
     transition: 1s;
     
 }
+.errors{
+    color: red;
+    
+}
+.it
 h1:hover{
     transition-delay: 70ms;
     transform: translateX(5%);

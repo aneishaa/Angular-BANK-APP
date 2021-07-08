@@ -61,6 +61,10 @@ input{
     font-size: 120%;
     
 }
+.errors{
+    color: red;
+    
+}
 .item:hover{
     width: 35%;
     

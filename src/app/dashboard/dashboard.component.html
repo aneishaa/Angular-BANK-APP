@@ -5,11 +5,14 @@
             <div class="col-lg-4 col-sm-12 main">
                 <h2>Transaction Deposit</h2>
                 <hr>
-                <form (ngSubmit)="deposit()">
+                <form  [formGroup] ="DepositForm"(ngSubmit)="deposit()">
                     <!-- <input type="text" class="items" [(ngModel)]="cname" name="cname" id="customername" placeholder="Customer Name"><br> -->
-                    <input type="text" class="items" id="accountnumber" [(ngModel)]="accno" name="accno"  placeholder="Confirm Account Number"><br>
-                    <input type="text" class="items" id="Amt" [(ngModel)]="amt" name="amount" placeholder="Amount"><br>
-                    <input type="pswd" class="items" id="pswd" [(ngModel)]="pswd" name="p1" placeholder="Password"><br>
+                    <input type="text" class="items" id="accountnumber" formControlName="accno" name="accno"  placeholder="Confirm Account Number"><br>
+                    <div *ngIf="(this.DepositForm.get('accno')?.touched || this.DepositForm.get('accno')?.dirty)&& this.DepositForm.get('accno')?.errors" class="errors">Invalid Account Number</div>
+                    <input type="text" class="items" id="Amt"   formControlName="amt" name="amount" placeholder="Amount"><br>
+                    <div *ngIf="(this.DepositForm.get('amt')?.touched || this.DepositForm.get('amt')?.dirty)&& this.DepositForm.get('amt')?.errors" class="errors">Invalid Amount</div>
+                    <input type="password" class="items" id="pswd"  formControlName="pswd" name="p1" placeholder="Password"><br>
+                    <div *ngIf="(this.DepositForm.get('pswd')?.touched || this.DepositForm.get('pswd')?.dirty)&& this.DepositForm.get('pswd')?.errors" class="errors">Invalid Password</div>
                     <button class="item" >Deposit</button>
                 </form>
                 <!-- <div class="items" id="displayArea"></div> -->
@@ -19,12 +22,15 @@
                 <div class="col-lg-4 col-sm-12 main">
                     <h2>Transaction Withdraw</h2>
                     <hr>
-                    <form (ngSubmit)="withdraw()">
+                    <form [formGroup] ="WithdrawForm" (ngSubmit)="withdraw()">
                         <!-- <input type="text" class="items" id="customername" [(ngModel)]="cname1" name="cname" placeholder="Customer Name"><br> -->
                         
-                        <input type="text" class="items" id="accountnumber" [(ngModel)]="accno1" name="accno" placeholder="Confirm Account Number"><br>
-                        <input type="text" class="items" id="Amt" [(ngModel)]= "amt1" name="amount" placeholder="Amount"><br>
-                        <input type="pswd" class="items" id="pswd" [(ngModel)]="pswd1" name="p2" placeholder="Password"><br>
+                        <input type="text" class="items" id="accountnumber" formControlName="accno1" name="accno" placeholder="Confirm Account Number"><br>
+                        <div *ngIf="(this.WithdrawForm.get('accno1')?.touched || this.WithdrawForm.get('accno1')?.dirty)&& this.WithdrawForm.get('accno1')?.errors" class="errors">Invalid Account Number</div>
+                        <input type="text" class="items" id="Amt" formControlName="amt1" name="amount" placeholder="Amount"><br>
+                        <div *ngIf="(this.WithdrawForm.get('amt1')?.touched || this.WithdrawForm.get('amt1')?.dirty)&& this.WithdrawForm.get('amt1')?.errors" class="errors">Invalid Amount</div>
+                        <input type="pswd" class="items" id="pswd" formControlName="pswd1"  name="p2" placeholder="Password"><br>
+                        <div *ngIf="(this.WithdrawForm.get('pswd1')?.touched || this.WithdrawForm.get('pswd1')?.dirty)&& this.WithdrawForm.get('pswd1')?.errors" class="errors">Invalid Password</div>
                         <button class="item" >Withdraw</button>
                     </form>
                     <!-- <div class="items" id="displayArea"></div> -->

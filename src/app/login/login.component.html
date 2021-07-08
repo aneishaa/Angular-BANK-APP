@@ -4,12 +4,12 @@
         <div class="col-lg-4 col-sm-12 main">
             <h2>Sign In</h2><hr>
             <h3>{{Aim }}</h3>
-            <form (ngSubmit)="login()">
-            <input type="text" class="items" id="acno" name="acno" [(ngModel)]="accno" placeholder="Account Number"><br>
-            
+            <form [formGroup] ="LoginForm"(ngSubmit)="login()">
+            <input type="text" class="items" id="accno" name="acno" formControlName="accno" placeholder="Account Number"><br>
+            <div *ngIf="(this.LoginForm.get('accno')?.touched || this.LoginForm.get('accno')?.dirty)&& this.LoginForm.get('accno')?.errors" class="errors">Invalid Account Number</div>
             <!-- <input type="text" class="items" id="uname" placeholder="USERNAME"><br> -->
-            <input type="password" class="items"   id="pwd" name="pwd" [(ngModel)]= "pwd" placeholder="PASSWORD"><br>
-            
+            <input type="password" class="items"   id="pwd" name="pwd" formControlName="pwd" placeholder="PASSWORD"><br>
+            <div *ngIf="(this.LoginForm.get('pwd')?.touched || this.LoginForm.get('pwd')?.dirty)&& this.LoginForm.get('pwd')?.errors" class="errors">Invalid Password</div>
             <button class="item" >Log In</button>
             <a routerLink="register">SignUp</a>
         </form>

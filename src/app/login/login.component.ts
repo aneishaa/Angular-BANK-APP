@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 @Component({ 
@@ -10,8 +11,43 @@ export class LoginComponent implements OnInit {
 
   Aim ="Welcome to Luminar Bank"
   account = "Account Number Please"
-  accno = ""
-  pwd = ""
+  // accno = ""
+  // pwd = ""
+  LoginForm= this.fb.group({
+   
+    accno :['',[Validators.required,Validators.required,Validators.minLength(4),Validators.pattern('[0-9]*')]],
+    
+    pwd :['',[Validators.required,Validators.pattern('[a-zA-z0-9]*')]]
+   })
+
+  constructor(private router:Router,private ds:DataService,private fb:FormBuilder) { }
+
+  ngOnInit(): void {
+  }
+
+  
+
+  login(){
+    // var acno = a.value
+    // var pwd = p.value
+
+    var acno = this.LoginForm.value.accno;
+    var pwd = this.LoginForm.value.pwd;
+  // alert("login successful")
+  if(this.LoginForm.valid){
+  let accDetails = this.ds.users;
+   var result = this.ds.login(acno,pwd)
+  
+   if(result){
+     alert("login successful");
+     this.router.navigateByUrl("dashboard")
+   }
+  }
+  else{
+    alert("Invalid Form")
+  }
+  }
+// *****************************************************************************************
 //   users:any = {
 //     1000: { acno: 1000, username: "userone", password: "userone", actype: "savings", balance: 5000 },
 //     1001: { acno: 1001, username: "usertwo", password: "usertwo", actype: "savings", balance: 6000 },
@@ -20,12 +56,7 @@ export class LoginComponent implements OnInit {
 
 // }
 
-  constructor(private router:Router,private ds:DataService) { }
-
-  ngOnInit(): void {
-  }
-
-  // accChange(event:any){
+// accChange(event:any){
   //   this.accno =event.target.value
   // //  alert(this.accno)
   // }
@@ -33,24 +64,6 @@ export class LoginComponent implements OnInit {
   //   this.pwd =event.target.value
   // //  alert(this.pwd)
   // }
-
-  login(){
-    // var acno = a.value
-    // var pwd = p.value
-
-    var acno = this.accno;
-    var pwd = this.pwd;
-  // alert("login successful")
-
-  let accDetails = this.ds.users;
-   var result = this.ds.login(acno,pwd)
-
-   if(result){
-     alert("login successful");
-     this.router.navigateByUrl("dashboard")
-   }
-  }
-// *****************************************************************************************
   //   if (acno in accDetails){
   //     if (pwd == accDetails[acno]["password"]){
   //      alert("Login Successful")

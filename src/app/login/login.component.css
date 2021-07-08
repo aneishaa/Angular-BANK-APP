@@ -43,6 +43,11 @@ input{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 700;
 }
+.errors{
+    color: red;
+    
+}
+.it
 .items:hover{
     padding: 20px;
     transition-duration: 900ms;
