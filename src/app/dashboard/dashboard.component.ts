@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,20 +7,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  cname =""
+  // cname =""
   accno =""
   amt=""
-  cname1=""
+  pswd =""
+  // cname1=""
   accno1 =""
   amt1 = ""
-  constructor() { }
-
+  pswd1 =""
+  constructor(private ds:DataService) { }
   ngOnInit(): void {
   }
   deposit(){
-    alert("deposit")
+    var acno = this.accno
+    var amt = this.amt
+    var pwd = this.pswd
+    var result =this.ds.deposit(acno,pwd,amt)
+    if(result){
+      alert(amt+"Deposited succesfully and new balance is "+result)
+    }
   }
+
+  
   withdraw(){
-    alert("withdraw")
+    var acno = this.accno1
+    var amt = this.amt1
+    var pwd = this.pswd1
+    var result =this.ds.withdraw(acno,pwd,amt)
+    if(result){
+      alert(amt+"Withdrawn  succesfully and new balance is "+result)
+    }
   }
 }

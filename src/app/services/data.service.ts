@@ -30,6 +30,7 @@ export class DataService {
 
     }
     return true;
+
     }
   }
    login(acno:any,pwd:any){
@@ -49,4 +50,62 @@ export class DataService {
        return false;
      }
    }
+deposit(acno:any,pswd:any,amt:any){
+  var amount = parseInt(amt)
+  let accDetails = this.users;
+  if (acno in accDetails){
+    
+
+    if (pswd==accDetails[acno]["password"]){
+      accDetails[acno]["balance"] += amount
+      return  accDetails[acno]["balance"]
+
+
+    }
+    else{
+      alert("incorrect password");
+      return false;
+    }
+
+  }
+  else {
+    alert("invalid accnt number");
+    return false;
+  }
+}
+
+withdraw(acno:any,pswd:any,amt:any){
+  var amount = parseInt(amt)
+  let accDetails = this.users;
+  if (acno in accDetails){
+        if (accDetails[acno]["balance"]>amount){
+               if (pswd==accDetails[acno]["password"]){
+               accDetails[acno]["balance"] -= amount
+               return  accDetails[acno]["balance"]
+  
+  
+               }
+               else{
+              alert("incorrect password");
+              return false;
+              }
+            }
+        else {
+                alert("Nosufficient balance")
+              }
+            }
+ else {
+    alert("invalid accnt number");
+    return false;
+  }
+    
+    
+   
+
+    
+
+}
+ 
+
+
 }
