@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class DashboardComponent implements OnInit {
   // accno =""
   // amt=""
   // pswd =""
+  acno=""
 
   DepositForm=this.fb.group({
    
@@ -34,9 +36,11 @@ export class DashboardComponent implements OnInit {
   // amt1 = ""
   // pswd1 =""
 
-  constructor(private ds:DataService,private fb:FormBuilder) { }
+  constructor(private ds:DataService,private fb:FormBuilder,private router:Router) { }
   ngOnInit(): void {
   }
+
+  user = this.ds.currentUser
   deposit(){
     var acno = this.DepositForm.value.accno
     var amt = this.DepositForm.value.amt
@@ -69,4 +73,15 @@ export class DashboardComponent implements OnInit {
       alert("invalid Form")
     } // end else if result
   }
+  deleteAcc(){
+    this.acno =this.ds.currentAcc
+  }
+onDelete(event:any){
+  alert("From Parent" +event)
+  this.router.navigateByUrl("")
+}
+onCancel(){
+  this.acno=''
+}
+
 }

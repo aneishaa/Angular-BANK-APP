@@ -1,9 +1,11 @@
 <body>
     <div class="container">
+        <h2>Welcome {{user}}</h2>
+        <a routerLink="/transaction">Transaction History</a>
         <div class="row">
             <div class="col-lg-4 col-sm-12 first"></div>
-            <div class="col-lg-4 col-sm-12 main">
-                <h2>Transaction Deposit</h2>
+            <div [ngClass] = "acno? 'd1': '' "class="col-lg-4 col-sm-12 main">
+                <h2 appHighlight>Transaction Deposit</h2>
                 <hr>
                 <form  [formGroup] ="DepositForm"(ngSubmit)="deposit()">
                     <!-- <input type="text" class="items" [(ngModel)]="cname" name="cname" id="customername" placeholder="Customer Name"><br> -->
@@ -19,8 +21,8 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-sm-12 first"></div>
-                <div class="col-lg-4 col-sm-12 main">
-                    <h2>Transaction Withdraw</h2>
+                <div [ngClass] = "acno? 'd1': '' " class="col-lg-4 col-sm-12 main">
+                    <h2 appHighlight>Transaction Withdraw</h2>
                     <hr>
                     <form [formGroup] ="WithdrawForm" (ngSubmit)="withdraw()">
                         <!-- <input type="text" class="items" id="customername" [(ngModel)]="cname1" name="cname" placeholder="Customer Name"><br> -->
@@ -38,6 +40,11 @@
                 
             </div>
         </div>
+    </div>
+    <br>
+    <app-delete-confirmation (onCancel)="onCancel()" (onDelete)="onDelete($event)" [item]="acno"></app-delete-confirmation>
+    <div id ="delete1" class="col-lg-4 col-sm-12">
+        <button class="item" (click)="deleteAcc()">Delete</button>
     </div>
 
 </body>

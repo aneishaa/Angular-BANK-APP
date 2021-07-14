@@ -128,3 +128,10 @@ p:hover{
     font-size:150%;
     transition-delay: 10ms;
 }
+#delete1{
+    margin-left: 360px;
+}
+.d1{
+    background-color:red;
+    opacity: 0.2;
+}

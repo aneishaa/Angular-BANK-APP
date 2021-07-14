@@ -1,0 +1,18 @@
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor=" let transactions of transaction">
+                <th>{{transactions.amount}}</th>
+                <th>{{transactions.type}}</th>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="dashboard()">dashboard</button>
+    
+</body>
