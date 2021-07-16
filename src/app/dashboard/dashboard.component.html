@@ -1,7 +1,11 @@
 <body>
     <div class="container">
         <h2>Welcome {{user}}</h2>
-        <a routerLink="/transaction">Transaction History</a>
+
+        <a routerLink="/transaction">Transaction History</a><br>
+        <h4>Last login {{lData}}</h4>
+        <h4>Last login formatted: {{lData |date |uppercase}}</h4>
+        <h4>Last login formatted: {{lData |date : 'short'}}</h4>
         <div class="row">
             <div class="col-lg-4 col-sm-12 first"></div>
             <div [ngClass] = "acno? 'd1': '' "class="col-lg-4 col-sm-12 main">
@@ -19,6 +23,7 @@
                 </form>
                 <!-- <div class="items" id="displayArea"></div> -->
             </div>
+            <app-animation></app-animation>
             <div class="row">
                 <div class="col-lg-4 col-sm-12 first"></div>
                 <div [ngClass] = "acno? 'd1': '' " class="col-lg-4 col-sm-12 main">

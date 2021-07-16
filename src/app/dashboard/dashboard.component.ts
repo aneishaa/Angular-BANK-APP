@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
   // accno1 =""
   // amt1 = ""
   // pswd1 =""
-
+   lData:Date = new Date()
   constructor(private ds:DataService,private fb:FormBuilder,private router:Router) { }
   ngOnInit(): void {
   }
